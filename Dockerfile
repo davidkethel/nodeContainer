@@ -1,7 +1,8 @@
-FROM node:12.18.1
+FROM node
 WORKDIR /app
- COPY package.json package.json
+COPY package.json package.json
 COPY package-lock.json package-lock.json
 RUN npm install
 COPY . .
-CMD ["node", "index.js"]
+RUN npm run build
+CMD ["node", "./dist/index.js"]
